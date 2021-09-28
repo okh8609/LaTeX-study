@@ -1,0 +1,63 @@
+%!TEX program = xelatex
+\documentclass[UTF8]{ctexart}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+
+\begin{document}
+	Hello, World!\\
+	你好世界：$f(x)=\frac{1}{\sqrt{2 \pi \sigma x}} e^{-\frac{(x-\mu)^{2}}{2 \sigma^{2}}}$
+	
+$$\mathcal{L}_{B}(\mathbf{W}, \phi, \boldsymbol{\theta}) \triangleq \frac{1}{n b}\left\|\mathbf{Y}_{B}-\hat{\mathbf{Y}}_{B}\right\|_{\ell_{p}}^{p}+\lambda \frac{1}{d(b-L)} \sum_{i=L}^{b-1}\left\|\mathbf{x}_{i+1}-h_{\mathbf{W}}\left(\mathbf{x}_{i-L+1}, \ldots, \mathbf{x}_{i}\right)\right\|_{\ell_{q}}^{q}$$
+
+$\mathcal{L}_{B}(\mathbf{W}, \phi, \boldsymbol{\theta}) \triangleq \frac{1}{n b}\left\|\mathbf{Y}_{B}-\hat{\mathbf{Y}}_{B}\right\|_{\ell_{p}}^{p}+\lambda \frac{1}{d(b-L)} \sum_{i=L}^{b-1}\left\|\mathbf{x}_{i+1}-h_{\mathbf{W}}\left(\mathbf{x}_{i-L+1}, \ldots, \mathbf{x}_{i}\right)\right\|_{\ell_{q}}^{q}$
+
+$$ Y=FX \;\; ; \;\; X=F^+Y \;\; ; \;\; Y=FF^+Y $$
+
+$$ Y=FX \;\; ; \;\; 
+X=\mathop{\underbrace{F^+}}\limits_{pseudo-inverse} Y \;\; ; \;\; 
+Y=FF^+Y $$
+
+$$Y=FX\quad;\quad
+X=\underbrace{F^{+}}_{\text{pseudo-inverse}}Y\quad;\quad
+Y=F \underbrace{F^{+}}_{\text{pseudo-inverse}} Y$$
+
+
+
+Trying to typeset an inline matrix here:
+$\begin{pmatrix}
+	a & b\\ 
+	c & d
+\end{pmatrix}$, but it looks too big, so let's try 
+$\big(\begin{smallmatrix}
+	a & b\\
+	c & d
+\end{smallmatrix}\big)$ instead.
+
+$$\begin{pmatrix}
+	1 & 2 & 3\\
+	d & b & c
+\end{pmatrix}$$
+
+
+$$ \max \limits_{i=1} $$
+$ \max \limits_{i=1} $
+$$ \max_{i=1} $$
+$ \max_{i=1} $
+
+$$
+\mathop{\underbrace{Y}}
+\limits_{n \times T}
+= \mathop{\underbrace{F}}
+\limits_{n \times d}
+\mathop{\underbrace{X}}
+\limits_{d \times T}
+$$
+
+$$\hat{\mathop{x}}_{l-j}$$
+
+
+
+
+\end{document}
