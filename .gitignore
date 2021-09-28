@@ -1,0 +1,5 @@
+/*
+!/.gitignore
+!/book
+/book/*
+!/book/*.tex
