@@ -1,6 +1,8 @@
 \documentclass[12pt]{article}
+\usepackage[a4paper, hmargin=1.25in,vmargin=1in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{wasysym}
 \usepackage{CJKutf8}
 \usepackage{ulem}
 %\usepackage[normalem]{ulem}
@@ -9,11 +11,15 @@
 \usepackage{lettrine}
 \usepackage{indentfirst} %強制首段縮排
 \usepackage{xcolor}
+\usepackage{graphicx} % 插入圖片用(p50)
+\usepackage{fancyvrb} % 程式碼區塊
+%帶行號的程式碼區塊
+\usepackage{multicol} % 多欄
 \usepackage{hyperref} %容易衝突，要放最後 p.37
 \hypersetup{
 	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,      
+	linkcolor=teal,%blue,
+	filecolor=violet,%magenta,      
 	urlcolor=cyan,
 	pdftitle={Overleaf Example},
 	pdfpagemode=FullScreen,
@@ -46,16 +52,22 @@
 }
 
 \title{The Title\thanks{ha ha ha}}
-\date{October 10, 2021}
 \author{OU, KAI-HAO\\CSIE\thanks{cmlab}, NTU}
+\date{October 10, 2021}
+
+% \renewcommand{\thesection}{Section.~\arabic{section}} % 詳見p.47
+% \renewcommand{\thesection}{\arabic{section}.} % 詳見p.47
+
 \begin{document}
 %\begin{CJK*}{UTF8}{bsmi} %細明體
 \begin{CJK*}{UTF8}{bkai} %標楷體	
 	\maketitle
+	\tableofcontents
 	\begin{abstract}
 	把摘要輕鬆帶過，顯然並不適合。摘要對我來說有著舉足輕重的地位，必須要嚴肅認真的看待。在人類的歷史中，我們總是盡了一切努力想搞懂摘要。
 	\end{abstract}
 	
+	\newpage
 	\section{大綱}
 	
 	這裡是大綱，也可輸入英文 \\
@@ -131,8 +143,6 @@
 	$30\,^{\circ}\mathrm{C}C$ \\
 	$30\,$\textcelsius \\
 	
-	\newpage
-	
 	\mbox{}\\	
 	歐元：\texteuro \\
 	\mbox{1\,000\,000}\textdollar \\
@@ -172,12 +182,15 @@
 	
 	\begin{tightcenter}
 	防止換行用\textasciitilde\\	
-	防止換行用\textasciitilde
+	防止換行用\textasciitilde\\
+	如Fig.~99 %p27	
 	\end{tightcenter}	
 	
-	Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000,  Page 1000.
+	Page 100,  Page 100,  Page 100,  Page 100,  Page 100,  Page 100,  Page 100,  Page 100,  Page 100,  Page 100,  Page 100.
 	
-	Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000,  Page~1000.
+	Page~100,  Page~100,  Page~100,  Page~100,  Page~100,  Page~100,  Page~100,  Page~100,  Page~100,  Page~100,  Page~100.
+	
+	電話號碼不想被斷詞 \mbox{+886 912 778 955} % p67
 	
 	\mbox{}
 	
@@ -216,7 +229,6 @@
 %	\Huge
 	
 	% inline
-	\noindent\mbox{}\\
 	{\fontsize{22}{\baselineskip}\selectfont Text Size Demo.\\}
 	{\fontsize{23}{\baselineskip}\selectfont Text Size Demo.\\}
 	{\fontsize{24}{\baselineskip}\selectfont Text Size Demo.\\}
@@ -256,12 +268,8 @@
 	\mbox{}\\
 	{\textcolor{red!70}{70\%紅色}} \\
 	{\textcolor{-yellow}{黃色的互補色}} \\
-	
-	\newpage
 
 	\subsection{CH3-5 引用與註釋 (p.37)}
-
-
 
 	% chapter section figure table equation code listing
 
@@ -302,10 +310,128 @@
 		引用文字，引用文字。
 	\end{quotation}
 
+	\begin{itemize}
+		\item 第一項
+			\begin{itemize}
+			\item[-] 第二項
+			\item[*] 第二項
+			\item[+] 第二項
+			\end{itemize}
+	\end{itemize}
+	\mbox{}\\
+	\begin{enumerate}
+		\item AAA
+		\item[斷啦！] BBB
+		\item CCC
+	\end{enumerate}
+	\mbox{}\\
+	\begin{description}
+	\item This is an entry \textit{without} a label.
+	\item[變粗！] A short one-line description.
+	\item[變粗？] A much longer description.
+	\end{description}
 
+	%插入圖片
+	\graphicspath{{./fig/}{./}} %圖片搜尋路徑
 	
+	\begin{center}
+		\includegraphics[width=0.3\linewidth]{p1.pdf}
+	\end{center}
+
+	%浮動體 圖片
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.3\linewidth]{p1.pdf}
+		\caption{範例圖片的標題}
+		\label{fig:FFFFF}		
+	\end{figure}
 	
-	測試！ Hello world! 氣溫
+	%浮動體 表格
+	\begin{table}[!htb]
+		\centering
+		\caption{範例表格的標題}
+		\label{table:TTTTT}	
+		\begin{tabular}{ c c c }
+			cell1 & cell2 & cell3 \\ 
+			cell4 & cell5 & cell6
+		\end{tabular}	
+	\end{table}
+
+	\begin{center}
+		\begin{tabular}[c]{| l | c || p{3em} ||| r | @{**}  }
+			\hline\hline
+			
+			AA & BB & CC & dd\\
+			
+			D & E & F & g\\
+			
+			\cline{1-2}
+			
+			\multicolumn{2}{|c|}{G}  &  H  &  i \\
+			
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\noindent\\
+	\verb|#include<iostream>|\\
+	\verb|int main(void){ }|\\
+	\verb*|int main(void){ }|
+	
+	\begin{verbatim}
+		#include<iostream>
+		int main(void){ }
+	\end{verbatim}
+
+	\begin{verbatim*}
+	#include<iostream>
+	int main(void){ 
+		}
+	\end{verbatim*}
+
+	\begin{Verbatim}
+1234567890
+	12345678901234567890
+		1234567890
+	12345678901234567890
+1234567890
+	\end{Verbatim}
+	
+	\begin{Verbatim}[tabsize=4]
+	1234567890
+		12345678901234567890
+			1234567890
+		12345678901234567890
+	1234567890
+	\end{Verbatim}
+
+	\begin{multicols}{3}
+	[\subsection{Multicols}The text placed here can be displayed in a cross-column representation. This is really convenient when writing abstract layouts!]
+	Two-column documents can be easily created by passing the parameter \verb|\twocolumn| to the document class statement. If you need more flexibility in the column layout, or to create a document with multiple columns, the package \verb|multicol| provides a set of commands for that.	% \columnbreak
+	\end{multicols}
+
+	\mbox{}\\ %p68
+	OK. That's fine.\\
+	OK\@. That's fine.\\
+	OK.\@ That's fine.\\
+	Prof. OU is a nice man.\\
+	Prof.~OU is a nice man.\\ %不允許斷行
+	Prof.\ OU is a nice man.\\ %允許斷行
+
+	\mbox{}\\
+	\permil \\
+	\hexstar \\
+	\male \\
+	\female \\
+	\XBox \\
+	\checked \\
+	\CheckedBox \\
+	\phone \\
+	\twonotes \\
+
+
+
+
 	\newpage
 	\section{CH4 latex數學排版}
 	
